@@ -4,6 +4,9 @@
  */
 package ui;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 20221074010053
@@ -189,27 +192,29 @@ public class trianguloUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static boolean isTriangle(double a, double b, double c){
-   
-        return a + b > c && a + c > b && b +c > a;
-        
+    public static boolean isTriangle(double a, double b, double c) {
+
+        return a + b > c && a + c > b && b + c > a;
+
     }
-    
-    public static String typeTriangle(double a, double b, double c){
-    
-        if ( a == b && b == c) {
-        return  "equilatero;";
-        }else if (a == b || b == c || a == c) {
-        
+
+    public static String typeTriangle(double a, double b, double c) {
+
+        if (a == b && b == c) {
+            return "equilatero;";
+        } else if (a == b || b == c || a == c) {
+            return "isoceles";
+        } else {
+            return "escaleno";
         }
-        
+
     }
-    
-    public static double areaTriangle (double a, double b, double c){
-    double p = (a + b + c)/2; 
-    return Math.sqrt(p )
+
+    public static double areaTriangle(double a, double b, double c) {
+        double p = (a + b + c) / 2;
+        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
     }
-    
+
     private void aTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_aTFActionPerformed
@@ -223,33 +228,51 @@ public class trianguloUI extends javax.swing.JFrame {
     }//GEN-LAST:event_cTFActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double a = Double.parseDouble(aTF.getText());
-        double b = Double.parseDouble(bTF.getText());
-        double c = Double.parseDouble(cTF.getText());
-        
-        if (isTriangle (a, b, c)) {
-        tipolabel.setText("tipo ="+typeTriangle(a, b, c));
-        arealabel.setText(String.format("area = "))
+
+        if (aTF.getText().equals("")
+                || aTF.getText().equals("")
+                || aTF.getText().equals("")) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Preencha os lados",
+                    "Atencao",
+                    //          JOptionPane.INFORMATION_MESSAGE
+                    //          JOptionPane.WARNING_MESSAGE   
+                    //          JOptionPane.ERROR_MESSAGE
+                    //          JOptionPane.QUESTION_MESSAGE
+                    //          JOptionPane.PLAIN_MESSAGE 
+                    JOptionPane.INFORMATION_MESSAGE
+            );
         } else {
-        tipolabel.setText("nao e um triangulo");
-        tipolabel.setForeground(Color.red);
-        tipolabel.setText("");
+
+            double a = Double.parseDouble(aTF.getText());
+            double b = Double.parseDouble(bTF.getText());
+            double c = Double.parseDouble(cTF.getText());
+
+            if (isTriangle(a, b, c)) {
+                tipolabel.setText("tipo =" + typeTriangle(a, b, c));
+                arealabel.setText(String.format("area = %.4f", areaTriangle(a, b, c)));
+            } else {
+                tipolabel.setText("nao e um triangulo");
+                tipolabel.setForeground(Color.red);
+                tipolabel.setText("");
+            }
+
         }
-        
-        tipolabel.setText("calcule o tipo "+a+ " " +b+ " " +c);
-        arealabel.setText(" calcule a area ");
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         aTF.setText("");
         bTF.setText("");
         cTF.setText("");
-        
+
         double a = Double.parseDouble(aTF.getText());
         double b = Double.parseDouble(bTF.getText());
         double c = Double.parseDouble(cTF.getText());
-        
-        tipolabel.setText("calcule o tipo "+a+ " " +b+ " " +c);
+
+        tipolabel.setText("calcule o tipo " + a + " " + b + " " + c);
         arealabel.setText(" calcule a area ");
     }//GEN-LAST:event_jLabel1MouseClicked
 

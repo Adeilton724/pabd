@@ -73,8 +73,7 @@ public class adduserui extends javax.swing.JFrame {
         jLabel5.setText("cidade :");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acari", "Açu", "Adrianópolis", "Água Nova", "Alexandre Costa", "Almino Afonso", "Antônio Martins", "Apodi", "Areia Branca", "Arês", "Baraúna", "Barcelona", "Bela Cruz", "Belém do Pará", "Bento Fernandes", "Boa Saúde", "Boa Vista", "Brejinho", "Caiçara do Norte", "Caiçara do Sul", "Caicó", "Campo Grande", "Canguaretama", "Caraúbas", "Carnaúba dos Dantas", "Carnaubais", "Cascudo", "Catu", "Ceres", "Ceará Mirim", "Ciriaco" }));
-        jComboBox1.setSelectedIndex(77
-        );
+        jComboBox1.setSelectedIndex(9);
 
         jButton1.setText("cadastrar");
 
